@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: PY
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the gh-pages branch
+  push:
+    branches: [ gh-pages ]
+  pull_request:
+    branches: [ gh-pages ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+          name: Install dependencies
+          run: |
+            python3 -m venv venv    
+            source venv/bin/activate  
+            pip install pyyaml
+            pip install Pillow
+          ref: # branch
+            my_other_branch
+      - name: execute py script # run file
+        run: |
+          python ./scripts/main.py
