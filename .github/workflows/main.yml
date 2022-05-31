@@ -30,6 +30,9 @@ jobs:
           source venv/bin/activate  
           pip install pyyaml
           pip install Pillow
+      - name: Install package
+        run: |
+          pip install -e .[scripts]
       - name: execute py script # run file
         run: |
           python3 ./scripts/main.py
