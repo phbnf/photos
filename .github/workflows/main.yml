@@ -24,12 +24,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8 #install the python needed
-          name: Install dependencies
-          run: |
-            python3 -m venv venv    
-            source venv/bin/activate  
-            pip install pyyaml
-            pip install Pillow
+      - name: Install dependencies
+        run: |
+          python3 -m venv venv    
+          source venv/bin/activate  
+          pip install pyyaml
+          pip install Pillow
           ref: # branch
             my_other_branch
       - name: execute py script # run file
